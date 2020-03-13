@@ -14,21 +14,35 @@ export class Routes {
             })
         })
         
-        // User 
+        // get all User  data
         app.route('/user')
         .get(this.UserController.getUsers)        
 
-        // POST endpoint
+        // save user data
         .post(this.ValidateHelper.userValidationRules(),
             this.ValidateHelper.valdation,
             this.UserController.addNewUser);
 
+        // get user by username and password
+        app.route('/user/single/manual')
+        .post(this.UserController.getUserByUserNameAndPassword)
+        // get user by email
+        app.route('/user/search/byEmail')
+            .post(this.UserController.getUserByEmail);
         // User detail
         app.route('/user/:id')
         // get specific User
         .get(this.UserController.getUserWithID)
-        .put(this.UserController.update)
+        // update user by id
+        .put(this.ValidateHelper.userValidationRules(),
+            this.ValidateHelper.valdation,
+            this.UserController.update)
+        // delete user by id
         .delete(this.UserController.delete)
+
+        // soft delete
+        app.route('/user/delete/:id')
+            .delete(this.UserController.softDelete);
 
     }
 }

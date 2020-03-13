@@ -13,6 +13,10 @@ const UserSchema = new Schema({
     },
     password: {
         type: String
+    },
+    isDeleted: {
+        type: Boolean,
+        default: false
     }
 }, {
     timestamps: true
