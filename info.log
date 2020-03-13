@@ -1,0 +1,9 @@
+{ message: 'Server listening on port: 3000',
+  level: 'info',
+  timestamp: '2020-03-12T14:57:46.766Z' }
+{ message: 'Server listening on port: 3000',
+  level: 'info',
+  timestamp: '2020-03-12T15:11:15.890Z' }
+{ message: 'Server listening on port: 3000',
+  level: 'info',
+  timestamp: '2020-03-12T15:14:28.107Z' }
