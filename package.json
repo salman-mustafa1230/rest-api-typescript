@@ -4,11 +4,11 @@
   "description": "Bakend API for User Management.",
   "main": "dist/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "dev": "ts-node ./lib/server.ts",
-    "start": " nodemon ./dist/server.js",
-    "prod": "npm run build && npm run start"
+    "start": " nodemon ./dist/lib/server.js",
+    "prod": "npm run build && npm run start",
+    "test": "nyc mocha"
   },
   "keywords": [
     "user"
@@ -24,5 +24,12 @@
     "mongoose-bcrypt": "^1.6.0",
     "nodemon": "^1.18.9",
     "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^7.1.0",
+    "nyc": "^15.0.0",
+    "request": "^2.88.2"
   }
 }

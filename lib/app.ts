@@ -31,7 +31,7 @@ class App {
     private mongoSetup(): void{
         mongoose.Promise = global.Promise;
         const db = mongoose.connection;
-        mongoose.connect(this.mongoUrl, {useNewUrlParser: true, useUnifiedTopology: true});
+        mongoose.connect(this.mongoUrl, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: true});
         db.on('error', function(error) {
             console.error('Error in MongoDb connection: ' + error);
             mongoose.disconnect();

@@ -52,7 +52,7 @@ export class UserController{
         const { body } = req;
         const limit = body.limit || 10;
         var sortby = body.sortby ? body.sortby : {};
-        var skip = limit && body.page ? (limit) * (body.page - 1) : {};
+        var skip = limit && body.page ? (limit) * (body.page - 1) : 0;
         try {
             const user = await User.find({ isDeleted: false })
                 .sort(sortby)
@@ -82,7 +82,10 @@ export class UserController{
         try {
             const { userId } = req.params;           
             const user = await User.findOneAndUpdate({ _id: userId }, req.body, { new: true });
-            res.json(user);
+            
+            if ( user )
+                return res.json(user);
+            return next('No Record Found');
         } catch (err) {
             logger.debug(err);
             return next(err);

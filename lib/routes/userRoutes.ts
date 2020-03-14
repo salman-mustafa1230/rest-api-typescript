@@ -15,9 +15,10 @@ export class Routes {
         })
         
         // get all User  data
+        app.route('/user/all')
+        .post(this.UserController.getUsers);
+        
         app.route('/user')
-        .get(this.UserController.getUsers)        
-
         // save user data
         .post(this.ValidateHelper.userValidationRules(),
             this.ValidateHelper.valdation,
